@@ -1,7 +1,9 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import styled from 'styled-components';
 import './App.css';
 import BackgroundImage from './background_image';
+import MainContainer from './container/cirrus_container';
 
 const NestedElements = styled.div`
 display: flex;
@@ -22,6 +24,8 @@ const NavBarStyle = styled.div`
 color: whitesmoke;
 position: relative;
 padding: 1em;
+width: auto;
+height: auto;
 /* border: 2px solid whitesmoke; */
 /* background: salmon; */
 /* background: lightcoral; */
@@ -55,19 +59,13 @@ padding-right: 2em;
 
 function App() {
   return (
-    <div className="App">
-      <BackgroundImage/>
-        <NestedElements>
-         <div><NavBarSubHeadStyle>Local Forecast</NavBarSubHeadStyle></div>
-          <NavBarBlank></NavBarBlank>
-              <NavBarStyle> 
-                  <div><HeaderStyle>Cirrus</HeaderStyle></div>
-                  <div><h3>Your Local Weather</h3></div>
-              </NavBarStyle>
-            <NavBarBlank></NavBarBlank>
-            <div><NavBarSubHeadStyle>Future Forecast</NavBarSubHeadStyle></div>
-        </NestedElements>
-    </div>
+    <Router>
+      <div className="App">
+        <BackgroundImage/>
+        <MainContainer/>
+        {/* copyright */}
+      </div>
+    </Router>
   );
 }
 
